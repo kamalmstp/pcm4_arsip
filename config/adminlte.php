@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Admin DKRTH',
 
     'title_prefix' => '',
 
@@ -128,10 +128,10 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-        ],
+        // [
+        //     'text' => 'search',
+        //     'search' => true,
+        // ],
         ['header' => 'main_navigation'],
         [
             'text' => 'blog',
@@ -140,8 +140,20 @@ return [
         ],
         [
             'text'        => 'Home',
-            'url'         => '/',
+            'url'         => 'index',
             'icon'        => 'far fa-home',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Tambah Aset',
+            'url'         => '/admin/tambah',
+            'icon'        => 'far fa-plus',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Tambah Request',
+            'url'         => '/kegiatan/request',
+            'icon'        => 'far fa-user',
             'label_color' => 'success',
         ],
         [
@@ -150,67 +162,48 @@ return [
             'icon'        => 'far fa-user',
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text'        => 'Nilai Aset',
+            'url'         => 'nilaiaset',
+            'icon'        => 'far fa-bar-chart',
+            'label_color' => 'success',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text'        => 'Request',
+            'url'         => 'request',
+            'icon'        => 'far fa-bar-chart',
+            'label_color' => 'success',
         ],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'        => 'Diambil',
+            'url'         => '/kegiatan/diambil',
+            'icon'        => 'far fa-bar-chart',
+            'label_color' => 'success',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
+            'text'        => 'Perawatan',
+            'url'         => '/kegiatan/perawatan',
+            'icon'        => 'far fa-bar-chart',
+            'label_color' => 'success',
+        ],
+        
+        [
+            'text'        => 'Barang Masuk',
+            'url'         => '/gudang/masuk',
+            'icon'        => 'far fa-bar-chart',
+            'label_color' => 'success',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
+            'text'        => 'Log Stok',
+            'url'         => '/gudang/logstok',
+            'icon'        => 'far fa-bar-chart',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Kerusakan',
+            'url'         => '/admin/kerusakan',
+            'icon'        => 'far fa-bar-chart',
+            'label_color' => 'success',
         ],
     ],
 
