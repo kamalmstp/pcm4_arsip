@@ -169,14 +169,14 @@ return [
                     'label_color' => 'success',
                 ],
                 [
-                    'text'        => 'Perawatan',
-                    'url'         => '/kegiatan/perawatan',
+                    'text'        => 'Log Stok',
+                    'url'         => '/gudang/logstok',
                     // 'icon'        => 'fas fa-bar-chart',
                     'label_color' => 'success',
                 ],
                 [
-                    'text'        => 'Log Stok',
-                    'url'         => '/gudang/logstok',
+                    'text'        => 'Perawatan',
+                    'url'         => '/kegiatan/perawatan',
                     // 'icon'        => 'fas fa-bar-chart',
                     'label_color' => 'success',
                 ],

@@ -64,3 +64,6 @@ Route::post('/kegiatan/save', 'kegiatanController@save')->name('kegiatan.save');
 Route::get('/kegiatan/edit/{id}', 'kegiatanController@edit')->name('kegiatan.edit');
 Route::post('/kegiatan/edit/save', 'kegiatanController@saveEdit')->name('kegiatan.edit.save');
 Route::get('/kegiatan/delete/{id}', 'kegiatanController@delete')->name('kegiatan.delete');
+
+// asset
+Route::post('/admin/tambah/save', 'tambahController@save')->name('tambah.save');
