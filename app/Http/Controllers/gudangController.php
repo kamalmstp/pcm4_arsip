@@ -7,27 +7,25 @@ use Validator;
 use Session;
 use App;
 
-use App\Kegiatan;
-use App\Bidang;
+use App\Gudang;
 
-class kegiatanController extends Controller
+class gudangController extends Controller
 {
     public function index(){
-        $kegiatan = Kegiatan::all();
-        return view("kegiatan.list",["kegiatan"=>$kegiatan]);
+        $gudang = Gudang::all();
+        return view("gudang.list",["gudang"=>$gudang]);
     }
 
     public function add(){
-        $bidang = Bidang::all();
-        return view("kegiatan.add",["bidang"=>$bidang]);
+        return view("gudang.add");
     }
 
     public function edit($id){
-        $kegiatan = Kegiatan::find($id);
-        if(is_null($kegiatan)){
+        $gudang = Gudang::find($id);
+        if(is_null($gudang)){
             App::abort(404);
         }
-        return view("kegiatan.edit",["kegiatan"=>$kegiatan]);
+        return view("gudang.edit",["gudang"=>$gudang]);
     }
 
     public function save(Request $request){
@@ -40,7 +38,6 @@ class kegiatanController extends Controller
 
             $rules = [
                 'nama' => 'required|max:45',
-                'bidang' => 'required',
             ];
 
             $validator = Validator::make(request()->all(), $rules, $messages);
@@ -51,10 +48,9 @@ class kegiatanController extends Controller
                 return response()->json($data);
             }
 
-            $kegiatan = new Kegiatan;
-            $kegiatan->nama = $request->nama;
-            $kegiatan->id_bidang = $request->bidang;
-            $kegiatan->save();
+            $gudang = new Gudang;
+            $gudang->nama = $request->nama;
+            $gudang->save();
 
             $data["status"] = true;
             Session::flash('success', 'Data Berhasil Di Tambah');
@@ -82,9 +78,9 @@ class kegiatanController extends Controller
                 return response()->json($data);
             }
 
-            $kegiatan = Kegiatan::find($request->id_kegiatan);
-            $kegiatan->nama = $request->nama;
-            $kegiatan->save();
+            $gudang = Gudang::find($request->id_gudang);
+            $gudang->nama = $request->nama;
+            $gudang->save();
 
             $data["status"] = true;
             Session::flash('success', 'Data Berhasil Di Simpan');
@@ -93,13 +89,13 @@ class kegiatanController extends Controller
     }
 
     public function delete($id){
-        $kegiatan = Kegiatan::find($id);
-        if(is_null($kegiatan)){
+        $gudang = Gudang::find($id);
+        if(is_null($gudang)){
             App::abort(404);
         }
         // hapus
-        $kegiatan->delete();
+        $gudang->delete();
 
-        return redirect()->route('kegiatan.list')->with(['success' => 'Data Berhasil Di Hapus']);
+        return redirect()->route('gudang.list')->with(['success' => 'Data Berhasil Di Hapus']);
     }
 }

@@ -32,3 +32,35 @@ Route::get('/kegiatan/diambil', 'diambilController@diambil')->name('diambil');
 Route::get('/admin/kerusakan', 'kerusakanController@kerusakan')->name('kerusakan');
 Route::get('/admin/tambahkerusakan', 'kerusakanController@tambahkerusakan')->name('tambahkerusakan');
 Route::get('/gudang/logstok', 'kartuStokController@log')->name('log');
+
+// bidang
+Route::get('/bidang', 'bidangController@index')->name('bidang.list');
+Route::get('/bidang/add', 'bidangController@add')->name('bidang.add');
+Route::post('/bidang/save', 'bidangController@save')->name('bidang.save');
+Route::get('/bidang/edit/{id}', 'bidangController@edit')->name('bidang.edit');
+Route::post('/bidang/edit/save', 'bidangController@saveEdit')->name('bidang.edit.save');
+Route::get('/bidang/delete/{id}', 'bidangController@delete')->name('bidang.delete');
+
+// gudang
+Route::get('/gudang', 'gudangController@index')->name('gudang.list');
+Route::get('/gudang/add', 'gudangController@add')->name('gudang.add');
+Route::post('/gudang/save', 'gudangController@save')->name('gudang.save');
+Route::get('/gudang/edit/{id}', 'gudangController@edit')->name('gudang.edit');
+Route::post('/gudang/edit/save', 'gudangController@saveEdit')->name('gudang.edit.save');
+Route::get('/gudang/delete/{id}', 'gudangController@delete')->name('gudang.delete');
+
+// jenis
+Route::get('/jenis', 'jenisController@index')->name('jenis.list');
+Route::get('/jenis/add', 'jenisController@add')->name('jenis.add');
+Route::post('/jenis/save', 'jenisController@save')->name('jenis.save');
+Route::get('/jenis/edit/{id}', 'jenisController@edit')->name('jenis.edit');
+Route::post('/jenis/edit/save', 'jenisController@saveEdit')->name('jenis.edit.save');
+Route::get('/jenis/delete/{id}', 'jenisController@delete')->name('jenis.delete');
+
+// kegiatan
+Route::get('/kegiatan', 'kegiatanController@index')->name('kegiatan.list');
+Route::get('/kegiatan/add', 'kegiatanController@add')->name('kegiatan.add');
+Route::post('/kegiatan/save', 'kegiatanController@save')->name('kegiatan.save');
+Route::get('/kegiatan/edit/{id}', 'kegiatanController@edit')->name('kegiatan.edit');
+Route::post('/kegiatan/edit/save', 'kegiatanController@saveEdit')->name('kegiatan.edit.save');
+Route::get('/kegiatan/delete/{id}', 'kegiatanController@delete')->name('kegiatan.delete');

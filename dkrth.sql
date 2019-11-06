@@ -41,12 +41,7 @@ DROP TABLE IF EXISTS `aset_dkrth`.`bidang` ;
 CREATE TABLE IF NOT EXISTS `aset_dkrth`.`bidang` (
   `id_bidang` INT NOT NULL,
   `nama` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_bidang`),
-  CONSTRAINT `id_user`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`user` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_bidang`))
 ENGINE = InnoDB;
 
 
@@ -59,17 +54,7 @@ CREATE TABLE IF NOT EXISTS `aset_dkrth`.`kegiatan` (
   `id_kegiatan` INT NOT NULL,
   `nama` VARCHAR(45) NULL,
   `id_bidang` INT NULL,
-  PRIMARY KEY (`id_kegiatan`),
-  CONSTRAINT `id_bidang`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`bidang` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `id_user`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`user` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_kegiatan`))
 ENGINE = InnoDB;
 
 
@@ -96,17 +81,7 @@ CREATE TABLE IF NOT EXISTS `aset_dkrth`.`request` (
   `tanggal` DATE NULL,
   `id_kegiatan` INT NULL,
   `id_barang` INT NULL,
-  PRIMARY KEY (`id_request`),
-  CONSTRAINT `id_barang`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`barang` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `id_kegiatan`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`kegiatan` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_request`))
 ENGINE = InnoDB;
 
 
@@ -124,17 +99,7 @@ CREATE TABLE IF NOT EXISTS `aset_dkrth`.`history` (
   `status` VARCHAR(45) NULL,
   `toko` VARCHAR(45) NULL,
   `id_request` INT NULL,
-  PRIMARY KEY (`id_history`),
-  CONSTRAINT `id_request`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`request` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `id_barang`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`barang` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_history`))
 ENGINE = InnoDB;
 
 
@@ -151,22 +116,7 @@ CREATE TABLE IF NOT EXISTS `aset_dkrth`.`barang` (
   `tanggal` DATE NULL,
   `id_kegiatan` INT NULL,
   `id_jenis` INT NULL,
-  PRIMARY KEY (`id_barang`),
-  CONSTRAINT `id_kegiatan`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`kegiatan` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `id_jenis`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`jenis_barang` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `id_history`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`history` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_barang`) )
 ENGINE = InnoDB;
 
 
@@ -178,12 +128,7 @@ DROP TABLE IF EXISTS `aset_dkrth`.`gudang` ;
 CREATE TABLE IF NOT EXISTS `aset_dkrth`.`gudang` (
   `id_gudang` INT NOT NULL,
   `nama` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_gudang`),
-  CONSTRAINT `id_user`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`user` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_gudang`) )
 ENGINE = InnoDB;
 
 
@@ -199,22 +144,7 @@ CREATE TABLE IF NOT EXISTS `aset_dkrth`.`spk` (
   `id_kegiatan` INT NULL,
   `id_gudang` INT NULL,
   `tipe` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_spk`),
-  CONSTRAINT `id_barang`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`barang` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `id_kegiatan`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`kegiatan` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `id_gudang`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`gudang` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_spk`) )
 ENGINE = InnoDB;
 
 
@@ -228,12 +158,7 @@ CREATE TABLE IF NOT EXISTS `aset_dkrth`.`rusak` (
   `status` VARCHAR(45) NULL,
   `id_barang` INT NULL,
   `keterangan` VARCHAR(100) NULL,
-  PRIMARY KEY (`id_rusak`),
-  CONSTRAINT `id_barang`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`barang` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_rusak`) )
 ENGINE = InnoDB;
 
 
@@ -247,12 +172,7 @@ CREATE TABLE IF NOT EXISTS `aset_dkrth`.`perawatan` (
   `jadwal` DATE NULL,
   `id_barang` INT NULL,
   `keterangan` VARCHAR(100) NULL,
-  PRIMARY KEY (`id_perawatan`),
-  CONSTRAINT `id_barang`
-    FOREIGN KEY ()
-    REFERENCES `aset_dkrth`.`barang` ()
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_perawatan`) )
 ENGINE = InnoDB;
 
 

@@ -9,7 +9,7 @@
 @section('content')
     <section class="content">
         <div class="row">
-            <div class="col-md-6 col-xs-12">
+            <div class="col-md-8 col-xs-12">
 
                 <div class="box box-danger">
                     <div class="box-header">
@@ -17,6 +17,7 @@
                     </div>
                     <div class="box-body">
 
+                    <form action="#" enctype="multipart/form-data" id="form-tambah-asset">
                         <div class="form-group">
                             <label>Nama Barang</label>
 
@@ -65,10 +66,12 @@
                             <input type="text" class="form-control" name="status">
                         </div>
                         <div class="form-group">
-                                <button type="button" class="btn btn-success">Tambah</button>
+                                <button type="submit" class="btn btn-success">Tambah</button>
                                 <button type="button" class="btn btn-warning">Batalkan</button>
                             </div>
                         <!-- /.form group -->
+                    </form>
+
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -82,9 +85,14 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        $("#form-tambah-asset").submit(function(e){
+            e.preventDefault();
+            
+        });
+    </script>
 @stop

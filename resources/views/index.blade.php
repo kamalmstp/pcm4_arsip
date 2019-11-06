@@ -19,7 +19,6 @@
                   <th>List Aset</th>
                   <th>Jumlah Stok</th>
                   <th>Kegiatan</th>
-                  
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -78,7 +77,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="{{ asset('css/admin_custom.css') }}">
 @stop
 
 @section('js')

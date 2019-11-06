@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Admin</b>DKRTH',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>DKRTH</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -141,68 +141,114 @@ return [
         [
             'text'        => 'Home',
             'url'         => 'index',
-            'icon'        => 'far fa-home',
+            'icon'        => 'fas fa-home',
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Tambah Aset',
-            'url'         => '/admin/tambah',
-            'icon'        => 'far fa-plus',
+            'text'        => 'Barang',
+            'url'         => 'index',
+            // 'icon'        => 'fas fa-dolly-flatbed',
             'label_color' => 'success',
+            'submenu'     => [
+                [
+                    'text'        => 'Tambah Aset',
+                    'url'         => '/admin/tambah',
+                    // 'icon'        => 'fas fa-plus',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Barang Masuk',
+                    'url'         => '/gudang/masuk',
+                    // 'icon'        => 'fas fa-bar-chart',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Nilai Aset',
+                    'url'         => 'nilaiaset',
+                    // 'icon'        => 'fas fa-list',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Perawatan',
+                    'url'         => '/kegiatan/perawatan',
+                    // 'icon'        => 'fas fa-bar-chart',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Log Stok',
+                    'url'         => '/gudang/logstok',
+                    // 'icon'        => 'fas fa-bar-chart',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Kerusakan',
+                    'url'         => '/admin/kerusakan',
+                    // 'icon'        => 'fas fa-bar-chart',
+                    'label_color' => 'success',
+                ],
+            ]
         ],
         [
-            'text'        => 'Tambah Request',
+            'text'        => 'Request',
             'url'         => '/kegiatan/request',
-            'icon'        => 'far fa-user',
+            // 'icon'        => 'fas fa-user',
             'label_color' => 'success',
+            'submenu'     => [
+                [
+                    'text'        => 'Tambah Request',
+                    'url'         => '/kegiatan/request',
+                    // 'icon'        => 'fas fa-user',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Request',
+                    'url'         => 'request',
+                    // 'icon'        => 'fas fa-bar-chart',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Diambil',
+                    'url'         => '/kegiatan/diambil',
+                    // 'icon'        => 'fas fa-bar-chart',
+                    'label_color' => 'success',
+                ],
+            ]
+        ],
+        [
+            'text'        => 'Setting',
+            // 'icon'        => 'fas fa-user',
+            'label_color' => 'success',
+            'submenu'     => [
+                [
+                    'text'        => 'Bidang',
+                    'url'         => 'bidang',
+                    // 'icon'        => 'fas fa-user',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Gudang',
+                    'url'         => 'gudang',
+                    // 'icon'        => 'fas fa-user',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Jenis Barang',
+                    'url'         => 'jenis',
+                    // 'icon'        => 'fas fa-user',
+                    'label_color' => 'success',
+                ],
+                [
+                    'text'        => 'Kegiatan',
+                    'url'         => 'kegiatan',
+                    // 'icon'        => 'fas fa-user',
+                    'label_color' => 'success',
+                ],
+            ]
         ],
         [
             'text'        => 'User',
             'url'         => 'user',
-            'icon'        => 'far fa-user',
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'Nilai Aset',
-            'url'         => 'nilaiaset',
-            'icon'        => 'far fa-bar-chart',
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'Request',
-            'url'         => 'request',
-            'icon'        => 'far fa-bar-chart',
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'Diambil',
-            'url'         => '/kegiatan/diambil',
-            'icon'        => 'far fa-bar-chart',
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'Perawatan',
-            'url'         => '/kegiatan/perawatan',
-            'icon'        => 'far fa-bar-chart',
-            'label_color' => 'success',
-        ],
-        
-        [
-            'text'        => 'Barang Masuk',
-            'url'         => '/gudang/masuk',
-            'icon'        => 'far fa-bar-chart',
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'Log Stok',
-            'url'         => '/gudang/logstok',
-            'icon'        => 'far fa-bar-chart',
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'Kerusakan',
-            'url'         => '/admin/kerusakan',
-            'icon'        => 'far fa-bar-chart',
+            // 'icon'        => 'fas fa-user',
             'label_color' => 'success',
         ],
     ],
