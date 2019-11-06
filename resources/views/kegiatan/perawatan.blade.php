@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'User')
+@section('title', 'Perawatan')
 
 @section('content_header')
     <h1>List Perawatan</h1>
@@ -16,6 +16,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              @if (Session::has("success"))
+                <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  {{ Session::get("success") }}
+                </div>
+              @endif
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -27,40 +33,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  
-                  <td> 4</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  
-                  <td>5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  
-                  <td>5.5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
 
+                @foreach($perawatan as $row)
+                <tr>
+                  <td>{{ $row->barang->nama }}</td>
+                  <td>{{ $row->jadwal }}</td>
+                  <td>{{ $row->keterangan }}</td>
+                  <td>{{ $row->status }}</td>
+                  <td>
+                    <a href="{{route('perawatan.edit',['id'=>$row->id_perawatan])}}" class="btn  btn-warning">Edit</a>
+                    <a href="{{route('perawatan.delete',['id'=>$row->id_perawatan])}}" class="btn btn-danger">Delete</a>
+                  </td>
+                </tr>
+                @endforeach
              
                 </tbody>
                 <tfoot>

@@ -67,3 +67,10 @@ Route::get('/kegiatan/delete/{id}', 'kegiatanController@delete')->name('kegiatan
 
 // asset
 Route::post('/admin/tambah/save', 'tambahController@save')->name('tambah.save');
+
+
+// perawatan
+Route::post('/kegiatan/tambahperawatan/save', 'perawatanController@save')->name('perawatan.save');
+Route::get('/kegiatan/edit/{id}', 'perawatanController@edit')->name('perawatan.edit');
+Route::post('/kegiatan/edit/save', 'perawatanController@saveEdit')->name('perawatan.edit.save');
+Route::get('/kegiatan/delete/{id}', 'perawatanController@delete')->name('perawatan.delete');

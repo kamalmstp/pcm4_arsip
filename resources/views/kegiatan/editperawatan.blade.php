@@ -18,28 +18,29 @@
                     <div class="box-body">
 
                         <form action="#" id="form-perawatan">
+                            <input type="hidden" name="id_perawatan" value="{{ $perawatan->id_perawatan }}">
                             <div class="form-group">
                                 <label>Nama Barang</label>
 
                                 <select name="barang" class="form-control">
                                     <option value="">Pilih Barang</option>
                                     @foreach($barang as $row)
-                                    <option value="{{ $row->id_barang }}">{{ $row->nama }}</option>
+                                    <option value="{{ $row->id_barang }}" @if($perawatan->id_barang == $row->id_barang) selected @endif >{{ $row->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <!-- /.form group -->
                             <div class="form-group">
                                 <label>Jadwal</label><!--/.Datepicker-->
-                                <input type="text" class="form-control" name="jadwal">
+                                <input type="text" class="form-control" name="jadwal" value="{{ $perawatan->jadwal }}">
                             </div>
                             <div class="form-group">
                                 <label>Keterangan</label>
-                                <textarea type="text" class="form-control" name="keterangan"></textarea>
+                                <textarea type="text" class="form-control" name="keterangan">{{ $perawatan->keterangan }}</textarea>
                             </div>
                             <!-- /.form group -->
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">Tambah</button>
+                                <button type="submit" class="btn btn-success">Simpan</button>
                                 <button type="button" class="btn btn-warning">Batalkan</button>
                             </div>
                         <!-- /.form group -->
@@ -77,7 +78,7 @@
             $("#form-perawatan").submit(function(e){
                 e.preventDefault();
                 $.ajax({
-                    url: "{{ route('perawatan.save') }}",
+                    url: "{{ route('perawatan.edit.save') }}",
                     data: $('#form-perawatan').serialize(),
                     type: "POST",
                     dataType: "JSON",
