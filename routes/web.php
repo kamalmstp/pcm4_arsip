@@ -74,3 +74,9 @@ Route::post('/kegiatan/tambahperawatan/save', 'perawatanController@save')->name(
 Route::get('/kegiatan/edit/{id}', 'perawatanController@edit')->name('perawatan.edit');
 Route::post('/kegiatan/edit/save', 'perawatanController@saveEdit')->name('perawatan.edit.save');
 Route::get('/kegiatan/delete/{id}', 'perawatanController@delete')->name('perawatan.delete');
+
+// kerusakan
+Route::post('/admin/tambahkerusakan/save', 'kerusakanController@save')->name('kerusakan.save');
+Route::get('/admin/kerusakan/edit/{id}', 'kerusakanController@edit')->name('kerusakan.edit');
+Route::post('/admin/kerusakan/edit/save', 'kerusakanController@saveEdit')->name('kerusakan.edit.save');
+Route::get('/admin/kerusakan/delete/{id}', 'kerusakanController@delete')->name('kerusakan.delete');

@@ -16,6 +16,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              @if (Session::has("success"))
+                <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  {{ Session::get("success") }}
+                </div>
+              @endif
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -27,37 +33,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Hapus</a>
-                    <button type="button" class="btn  btn-danger">Selesai</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Hapus</a>
-                    <button type="button" class="btn  btn-danger">Selesai</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Hapus</a>
-                    <button type="button" class="btn  btn-danger">Selesai</button></td>
-                </tr>
-
+                  @foreach($kerusakan as $row)
+                  <tr>
+                    <td>{{ $row->barang->nama }}</td>
+                    <td>{{ $row->kegiatan->nama }}</td>
+                    <td>{{ $row->keterangan }}</td>
+                    <td>{{ $row->status }}</td>
+                    <td>
+                      <a  href="{{route('kerusakan.delete',['id'=>$row->id_rusak])}}" class="btn btn-warning">Hapus</a>
+                      <button type="button" class="btn  btn-danger">Selesai</button>
+                    </td>
+                  </tr>
+                  @endforeach
              
                 </tbody>
                 <tfoot>
