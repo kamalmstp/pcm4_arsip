@@ -38,8 +38,8 @@
                       <td>{{ $row->nama }}</td>
                       <td>{{ $row->bidang->nama }}</td>
                       <td>
-                        <a href="{{ route('kegiatan.edit',['id'=>$row->id_kegiatan]) }}" class="btn  btn-warning">Edit</a>
-                        <a href="{{ route('kegiatan.delete',['id'=>$row->id_kegiatan]) }}" class="btn btn-danger">Delete</a>
+                        <a href="" class="btn  btn-warning">Edit</a>
+                        <a href="" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   @endforeach
