@@ -3,7 +3,7 @@
 @section('title', 'Edit')
 
 @section('content_header')
-    <h1>Edit Bidang</h1>
+    <h1>Edit Kegiatan</h1>
 @stop
 
 @section('content')
@@ -13,14 +13,24 @@
 
                 <div class="box box-danger">
                     <div class="box-header">
-                        <h3 class="box-title">Edit Bidang</h3>
+                        <h3 class="box-title">Edit Kegiatan</h3>
                     </div>
                     <div class="box-body">
-                        <form action="#" id="form-bidang">
-                            <input type="hidden" name="id_bidang" value="{{ $bidang->id_bidang }}">
+                        <form action="#" id="form-kegiatan">
+                            <input type="hidden" name="id_kegiatan" value="{{ $kegiatan->id_kegiatan }}">
                             <div class="form-group">
-                                <label>Nama Bidang</label>
-                                <input type="text" class="form-control" name="nama" value="{{ $bidang->nama }}">
+                                <label>Nama Kegiatan</label>
+                                <input type="text" class="form-control" name="nama" value="{{ $kegiatan->nama }}">
+                            </div>
+                            <!-- /.form group -->
+                            <div class="form-group">
+                                <label>Bidang</label>
+                                <select name="bidang" class="form-control">
+                                    <option value="">Pilih Bidang</option>
+                                    @foreach($bidang as $row)
+                                    <option value="{{ $row->id_bidang }}" @if($kegiatan->id_bidang == $row->id_bidang) selected @endif>{{ $row->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <!-- /.form group -->
         
@@ -56,16 +66,16 @@
             }
         });
         $(function(){
-            $("#form-bidang").submit(function(e){
+            $("#form-kegiatan").submit(function(e){
                 e.preventDefault();
                 $.ajax({
-                    url: "{{ route('bidang.edit.save') }}",
-                    data: $('#form-bidang').serialize(),
+                    url: "{{ route('kegiatan.edit.save') }}",
+                    data: $('#form-kegiatan').serialize(),
                     type: "POST",
                     dataType: "JSON",
                     success: function(data){
                         if(data.status){
-                            window.location.href = "{{ route('bidang.list') }}";
+                            window.location.href = "{{ route('kegiatan.list') }}";
                         }else{
                             var error = data.error;
                             $.each(error,function(key, row){

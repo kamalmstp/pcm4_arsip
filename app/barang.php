@@ -10,5 +10,7 @@ class barang extends Model
     protected $primaryKey = 'id_barang';
     public $timestamps = false;
 
-    
+    public function kegiatan(){
+        return $this->hasOne('App\Kegiatan','id_kegiatan','id_kegiatan');
+    }
 }

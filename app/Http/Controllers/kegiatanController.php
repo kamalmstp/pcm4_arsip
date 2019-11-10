@@ -14,7 +14,7 @@ class kegiatanController extends Controller
 {
     public function index(){
         $kegiatan = Kegiatan::all();
-        return view("kegiatan.list",["kegiatan"=>$kegiatan]);
+        return view("kegiatan.list",["kegiatans"=>$kegiatan]);
     }
 
     public function add(){
@@ -24,10 +24,14 @@ class kegiatanController extends Controller
 
     public function edit($id){
         $kegiatan = Kegiatan::find($id);
+        $bidang = Bidang::all();
         if(is_null($kegiatan)){
             App::abort(404);
         }
-        return view("kegiatan.edit",["kegiatan"=>$kegiatan]);
+        return view("kegiatan.edit",[
+            "kegiatan"=>$kegiatan,
+            "bidang"=>$bidang
+            ]);
     }
 
     public function save(Request $request){
@@ -84,6 +88,7 @@ class kegiatanController extends Controller
 
             $kegiatan = Kegiatan::find($request->id_kegiatan);
             $kegiatan->nama = $request->nama;
+            $kegiatan->id_bidang = $request->bidang;
             $kegiatan->save();
 
             $data["status"] = true;

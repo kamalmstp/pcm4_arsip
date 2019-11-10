@@ -70,10 +70,10 @@ Route::post('/admin/tambah/save', 'tambahController@save')->name('tambah.save');
 
 
 // perawatan
-Route::post('/kegiatan/tambahperawatan/save', 'perawatanController@save')->name('perawatan.save');
-Route::get('/kegiatan/edit/{id}', 'perawatanController@edit')->name('perawatan.edit');
-Route::post('/kegiatan/edit/save', 'perawatanController@saveEdit')->name('perawatan.edit.save');
-Route::get('/kegiatan/delete/{id}', 'perawatanController@delete')->name('perawatan.delete');
+Route::post('/perawatan/tambahperawatan/save', 'perawatanController@save')->name('perawatan.save');
+Route::get('/perawatan/edit/{id}', 'perawatanController@edit')->name('perawatan.edit');
+Route::post('/perawatan/edit/save', 'perawatanController@saveEdit')->name('perawatan.edit.save');
+Route::get('/perawatan/delete/{id}', 'perawatanController@delete')->name('perawatan.delete');
 
 // kerusakan
 Route::post('/admin/tambahkerusakan/save', 'kerusakanController@save')->name('kerusakan.save');

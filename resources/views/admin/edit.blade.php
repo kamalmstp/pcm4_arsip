@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Add')
+@section('title', 'Edit')
 
 @section('content_header')
-    <h1>Tambah Aset</h1>
+    <h1>Edit Aset</h1>
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="box box-danger">
                     <div class="box-header">
-                        <h3 class="box-title">Tambah Barang/Aset</h3>
+                        <h3 class="box-title">Edit Barang/Aset</h3>
                     </div>
                     <div class="box-body">
 

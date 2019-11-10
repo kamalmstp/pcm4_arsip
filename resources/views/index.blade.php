@@ -23,46 +23,26 @@
                 </tr>
                 </thead>
                 <tbody>
+                
+                @foreach($barang as $row)
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
+                  <td>{{ $row->nama }}</td>
+                  <td>{{ $row->qty }}/{{ $row->satuan }}</td>
+                  <td>{{ $row->kegiatan->nama }}</td>
+                  <td>
+                    <a href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
+                    <button type="button" class="btn  btn-danger">Delete</button>
                   </td>
-                  <td>Win 95+</td>
-                 
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
                 </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                 
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-
+                @endforeach
              
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                 
-                  <th>CSS grade</th>
+                  <th>List Aset</th>
+                  <th>Jumlah Stok</th>
+                  <th>Kegiatan</th>
+                  <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

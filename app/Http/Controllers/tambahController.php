@@ -73,7 +73,9 @@ class tambahController extends Controller
     }
 
     public function masuk(){
-        
-        return view('gudang.masuk');
+        $barang = Barang::all();
+        return view('gudang.masuk',[
+            "barang"=>$barang,
+        ]);
     }
 }

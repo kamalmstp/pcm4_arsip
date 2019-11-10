@@ -24,37 +24,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-success">Setujui</a>
-                    </td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <<td><a  href="{{route('useredit')}}" class="btn  btn-success">Setujui</a>
-                    </td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-success">Setujui</a>
-                    </td>
-                </tr>
 
+                @foreach($barang as $row)
+                <tr>
+                  <td>{{ $row->nama }}</td>
+                  <td>{{ $row->qty }}/{{ $row->satuan }}</td>
+                  <td>Win 95+</td>
+                  <td> {{ date('d M Y', strtotime($row->tanggal)) }}</td>
+                  <td>
+                    <a  href="{{route('useredit')}}" class="btn  btn-success">Setujui</a>
+                  </td>
+                </tr>
+                @endforeach
              
                 </tbody>
                 <tfoot>
