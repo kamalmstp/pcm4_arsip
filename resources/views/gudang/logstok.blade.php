@@ -31,7 +31,7 @@
                   </td>
                   <td>Win 95+</td>
                   <td> 4</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-success">Cetak</a>
+                  <td><a  href="#" class="btn  btn-success">Cetak</a>
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +41,7 @@
                   </td>
                   <td>Win 95+</td>
                   <td>5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-success">Cetak</a>
+                  <td><a  href="#" class="btn  btn-success">Cetak</a>
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@
                   </td>
                   <td>Win 95+</td>
                   <td>5.5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-success">Cetak</a>
+                  <td><a  href="#" class="btn  btn-success">Cetak</a>
                     </td>
                 </tr>
 

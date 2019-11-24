@@ -18,7 +18,7 @@
                 <tr>
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
-                  <th>Nama Pengambil</th>
+                  <th>Kegiatan</th>
                   <th>Tanggal</th>
                   <th>Action</th>
                 </tr>
@@ -29,10 +29,10 @@
                 <tr>
                   <td>{{ $row->nama }}</td>
                   <td>{{ $row->qty }}/{{ $row->satuan }}</td>
-                  <td>Win 95+</td>
+                  <td>{{ $row->kegiatan->nama }}</td>
                   <td> {{ date('d M Y', strtotime($row->tanggal)) }}</td>
                   <td>
-                    <a  href="{{route('useredit')}}" class="btn  btn-success">Setujui</a>
+                    <a  href="#" class="btn  btn-success">Setujui</a>
                   </td>
                 </tr>
                 @endforeach
@@ -40,11 +40,11 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Nama Barang</th>
+                  <th>Jumlah</th>
+                  <th>Nama Pengambil</th>
+                  <th>Tanggal</th>
+                  <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

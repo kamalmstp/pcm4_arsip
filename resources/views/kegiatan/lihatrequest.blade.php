@@ -21,14 +21,14 @@
                             <div class="form-group">
                                 <label>Nama Request</label>
 
-                                <input type="text" class="form-control" name="nama_req">
+                                <input type="text" class="form-control" name="nama_req" value="{{ $request->nama_req }}">
                             </div>
                             <div class="form-group">
                                 <label>Barang</label>
                                 <select name="id_barang" class="form-control" id="select-barang">
                                     <option value="">Barang</option>
                                     @foreach($barang as $row)
-                                    <option value="{{ $row->id_barang }}">{{ $row->nama }}</option>
+                                    <option value="{{ $row->id_barang }}" @if($request->id_barang == $row->id_barang) selected @endif >{{ $row->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label>Jumlah</label>
 
-                                <input type="text" class="form-control" name="qty">
+                                <input type="text" class="form-control" name="qty" value="{{ $request->qty }}">
                             </div>
                             <!-- /.form group -->
                             <div class="form-group">
@@ -44,7 +44,7 @@
                                 <select name="id_kegiatan" class="form-control" id="select-kegiatan">
                                     <option value="">Kegiatan</option>
                                     @foreach($kegiatan as $row)
-                                    <option value="{{ $row->id_kegiatan }}">{{ $row->nama }}</option>
+                                    <option value="{{ $row->id_kegiatan }}" @if($request->id_kegiatan == $row->id_kegiatan) selected @endif >{{ $row->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -54,15 +54,14 @@
                                 <select name="id_user" class="form-control" id="select-user">
                                     <option value="">Pengambil</option>
                                     @foreach($user as $row)
-                                    <option value="{{ $row->id_user }}">{{ $row->nama }}</option>
+                                    <option value="{{ $row->id_user }}" @if($request->id_user == $row->id_user) selected @endif >{{ $row->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Tambah</button>
-                                    <a href="{{ route('request') }}" class="btn btn-warning">Batalkan</a>
-                                </div>
+                                <a href="{{ route('request') }}" class="btn btn-warning">Kembali</a>
+                            </div>
                             <!-- /.form group -->
                         </form>
                         

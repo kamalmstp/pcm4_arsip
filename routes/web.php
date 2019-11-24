@@ -23,11 +23,8 @@ Route::get('/admin/tambah', 'tambahController@tambah')->name('tambah');
 Route::get('/admin/edit/{id}', 'tambahController@edit')->name('aset.edit');
 Route::post('/admin/edit/save', 'tambahController@saveEdit')->name('aset.edit.save');
 Route::get('/gudang/masuk', 'tambahController@masuk')->name('masuk');
-Route::get('/request', 'requestController@request')->name('request');
-Route::get('/kegiatan/request', 'requestController@requestbarang')->name('requestbarang');
 Route::get('/kegiatan/perawatan', 'perawatanController@perawatan')->name('perawatan');
 Route::get('/kegiatan/tambahperawatan', 'perawatanController@tambahperawatan')->name('tambahperawatan');
-Route::get('/kegiatan/diambil', 'diambilController@diambil')->name('diambil');
 Route::get('/admin/kerusakan', 'kerusakanController@kerusakan')->name('kerusakan');
 Route::get('/admin/tambahkerusakan', 'kerusakanController@tambahkerusakan')->name('tambahkerusakan');
 Route::get('/gudang/logstok', 'kartuStokController@log')->name('log');
@@ -87,3 +84,14 @@ Route::post('/admin/tambahkerusakan/save', 'kerusakanController@save')->name('ke
 Route::get('/admin/kerusakan/edit/{id}', 'kerusakanController@edit')->name('kerusakan.edit');
 Route::post('/admin/kerusakan/edit/save', 'kerusakanController@saveEdit')->name('kerusakan.edit.save');
 Route::get('/admin/kerusakan/delete/{id}', 'kerusakanController@delete')->name('kerusakan.delete');
+
+// request
+Route::get('/request', 'requestController@request')->name('request');
+Route::get('/kegiatan/request', 'requestController@requestbarang')->name('requestbarang');
+Route::get('/kegiatan/request/lihat/{id}', 'requestController@lihat')->name('requestbarang.lihat');
+Route::get('/kegiatan/request/edit/{id}', 'requestController@edit')->name('requestbarang.edit');
+Route::post('/kegiatan/request/save', 'requestController@save')->name('requestbarang.save');
+Route::get('/kegiatan/request/delete/{id}', 'requestController@delete')->name('requestbarang.delete');
+Route::post('/kegiatan/request/edit/save', 'requestController@saveEdit')->name('requestbarang.saveEdit');
+Route::get('/kegiatan/diambil', 'diambilController@diambil')->name('diambil');
+Route::get('/kegiatan/diambil/delete/{id}', 'diambilController@delete')->name('diambil.delete');

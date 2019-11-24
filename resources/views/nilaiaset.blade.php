@@ -30,7 +30,7 @@
                   </td>
                   <td>Win 95+</td>
                  
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
+                  <td><a  href="#" class="btn  btn-warning">Edit</a>
                     <button type="button" class="btn  btn-danger">Delete</button></td>
                 </tr>
                 <tr>
@@ -40,7 +40,7 @@
                   </td>
                   <td>Win 95+</td>
                   
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
+                  <td><a  href="#" class="btn  btn-warning">Edit</a>
                     <button type="button" class="btn  btn-danger">Delete</button></td>
                 </tr>
                 <tr>
@@ -50,7 +50,7 @@
                   </td>
                   <td>Win 95+</td>
                  
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
+                  <td><a  href="#" class="btn  btn-warning">Edit</a>
                     <button type="button" class="btn  btn-danger">Delete</button></td>
                 </tr>
 

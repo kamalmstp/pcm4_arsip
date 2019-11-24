@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'User')
+@section('title', 'Request')
 
 @section('content_header')
     <h1>Daftar Permintaan Barang</h1>
@@ -13,60 +13,45 @@
             
             <!-- /.box-header -->
             <div class="box-body">
+              @if (Session::has("success"))
+                <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  {{ Session::get("success") }}
+                </div>
+              @endif
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th>Nama Aset</th>
                   <th>Jumlah </th>
                   <th>Kegiatan</th>
-                  <td>Nama Pengambil</td>
+                  <th>Nama Pengambil</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Trident</td>
-                  <td>Win 95+</td>
-                 
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Lihat</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Trident</td>
-                  <td>Win 95+</td>
-                  
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Lihat</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Trident</td>
-                  <td>Win 95+</td>
-                 
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Lihat</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
 
-             
+                @foreach($request as $row)
+                <tr>
+                  <td>{{ $row->nama_req }}</td>
+                  <td>{{ $row->qty }}</td>
+                  <td>{{ $row->kegiatan->nama }}</td>
+                  <td>{{ $row->user->nama }}</td>
+                  <td>
+                    <a href="{{ route('requestbarang.lihat',['id'=>$row->id_request]) }}" class="btn  btn-warning">Lihat</a>
+                    <a href="{{ route('requestbarang.delete',['id'=>$row->id_request]) }}"" class="btn  btn-danger">Delete</a>
+                  </td>
+                </tr>
+                @endforeach
+                
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                 
-                  <th>CSS grade</th>
+                  <th>Nama Aset</th>
+                  <th>Jumlah </th>
+                  <th>Kegiatan</th>
+                  <th>Nama Pengambil</th>
+                  <th>Aksi</th>
                 </tr>
                 </tfoot>
               </table>
