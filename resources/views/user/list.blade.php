@@ -16,6 +16,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              @if (Session::has("success"))
+                <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  {{ Session::get("success") }}
+                </div>
+              @endif
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -27,46 +33,28 @@
                 </tr>
                 </thead>
                 <tbody>
+                
+                @foreach($user as $row)
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
+                  <td>{{ $row->nama }}</td>
+                  <td>{{ $row->jabatan }}</td>
+                  <td>{{ $row->nip }}</td>
+                  <td>{{ ($row->status)?"Aktif":"Non-Aktif" }}</td>
+                  <td>
+                    <a href="{{ route('useredit',['id'=>$row->id_user]) }}" class="btn  btn-warning">Edit</a>
+                    <a href="{{ route('user.delete',['id'=>$row->id_user]) }}" class="btn  btn-danger">Delete</a>
                   </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
                 </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td><a  href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-
-             
+                @endforeach
+                
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Nama</th>
+                  <th>Jabatan</th>
+                  <th>NIP</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

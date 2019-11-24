@@ -18,9 +18,6 @@ Auth::routes();
 
 Route::get('/', 'dashboardController@index')->name('dashboard');
 Route::get('/index', 'adminController@index')->name('index');
-Route::get('/user', 'userController@index')->name('user');
-Route::get('/user/edit', 'userController@edit')->name('useredit');
-Route::get('/user/add', 'userController@add')->name('useradd');
 Route::get('/nilaiaset', 'nilaiController@add')->name('nilai');
 Route::get('/admin/tambah', 'tambahController@tambah')->name('tambah');
 Route::get('/admin/edit/{id}', 'tambahController@edit')->name('aset.edit');
@@ -34,6 +31,14 @@ Route::get('/kegiatan/diambil', 'diambilController@diambil')->name('diambil');
 Route::get('/admin/kerusakan', 'kerusakanController@kerusakan')->name('kerusakan');
 Route::get('/admin/tambahkerusakan', 'kerusakanController@tambahkerusakan')->name('tambahkerusakan');
 Route::get('/gudang/logstok', 'kartuStokController@log')->name('log');
+
+// user
+Route::get('/user', 'userController@index')->name('user');
+Route::get('/user/add', 'userController@add')->name('useradd');
+Route::post('/user/save', 'userController@save')->name('user.save');
+Route::get('/user/edit/{id}', 'userController@edit')->name('useredit');
+Route::post('/user/edit/save', 'userController@saveEdit')->name('useredit.save');
+Route::get('/user/delete/{id}', 'userController@delete')->name('user.delete');
 
 // bidang
 Route::get('/bidang', 'bidangController@index')->name('bidang.list');
