@@ -30,8 +30,8 @@
                   <td>{{ $row->qty }}/{{ $row->satuan }}</td>
                   <td>{{ $row->kegiatan->nama }}</td>
                   <td>
-                    <a href="{{route('useredit')}}" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button>
+                    <a href="{{ route('aset.edit', ['id'=>$row->id_barang]) }}" class="btn btn-warning">Edit</a>
+                    <button type="button" class="btn btn-danger">Delete</button>
                   </td>
                 </tr>
                 @endforeach

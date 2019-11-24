@@ -25,6 +25,19 @@ class tambahController extends Controller
             ]);
     }
 
+    public function edit($id){
+        $aset = Barang::find($id);
+        $kegiatan = Kegiatan::all();
+        $gudang = Gudang::all();
+        $jenis = Jenis::all();
+        return view('admin.edit',[
+            "kegiatan"=>$kegiatan,
+            "gudang"=>$gudang,
+            "jenis"=>$jenis,
+            "aset"=>$aset,
+            ]);
+    }
+
     public function save(Request $request){
         $method = $request->method();
         if ($request->isMethod('post')) {
@@ -68,6 +81,53 @@ class tambahController extends Controller
 
             $data["status"] = true;
             Session::flash('success', 'Data Berhasil Di Tambah');
+            return response()->json($data);
+        }
+    }
+
+    public function saveEdit(Request $request){
+        $method = $request->method();
+        if ($request->isMethod('post')) {
+            $messages = [
+                'required' => ':attribute harus di isi.',
+                'max' => ':attribute tidak lebih dari :max'
+            ];
+
+            $rules = [
+                'nama' => 'required|max:45',
+                'jumlah' => 'required',
+                'toko' => 'required|max:45',
+                'harga' => 'required',
+                'satuan' => 'required|max:5',
+                'spek' => 'required|max:45',
+                'tanggal' => 'required',
+                'kegiatan' => 'required',
+                'jenis' => 'required',
+            ];
+
+            $validator = Validator::make(request()->all(), $rules, $messages);
+
+            if($validator->fails()){
+                $data["status"] = false;
+                $data["error"] = $validator->errors();
+                return response()->json($data);
+            }
+
+            $barang = Barang::find($request->id_barang);
+            $barang->nama = $request->nama;
+            $barang->qty = $request->jumlah;
+            $barang->toko = $request->toko;
+            $barang->harga = $request->harga;
+            $barang->spek = $request->spek;
+            $barang->satuan = $request->satuan;
+            $barang->tanggal = $request->tanggal;
+            $barang->id_kegiatan = $request->kegiatan;
+            $barang->id_jenis = $request->jenis;
+            $barang->id_gudang = $request->gudang;
+            $barang->save();
+
+            $data["status"] = true;
+            Session::flash('success', 'Data Berhasil Di Simpan');
             return response()->json($data);
         }
     }

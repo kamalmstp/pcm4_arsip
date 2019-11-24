@@ -23,6 +23,8 @@ Route::get('/user/edit', 'userController@edit')->name('useredit');
 Route::get('/user/add', 'userController@add')->name('useradd');
 Route::get('/nilaiaset', 'nilaiController@add')->name('nilai');
 Route::get('/admin/tambah', 'tambahController@tambah')->name('tambah');
+Route::get('/admin/edit/{id}', 'tambahController@edit')->name('aset.edit');
+Route::post('/admin/edit/save', 'tambahController@saveEdit')->name('aset.edit.save');
 Route::get('/gudang/masuk', 'tambahController@masuk')->name('masuk');
 Route::get('/request', 'requestController@request')->name('request');
 Route::get('/kegiatan/request', 'requestController@requestbarang')->name('requestbarang');

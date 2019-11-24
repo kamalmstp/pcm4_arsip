@@ -18,54 +18,55 @@
                     <div class="box-body">
 
                     <form action="#" enctype="multipart/form-data" id="form-tambah-asset">
+                        <input type="hidden" name="id_barang" value="{{ $aset->id_barang }}">
                         <div class="form-group">
                             <label>Nama Barang</label>
 
-                            <input type="text" class="form-control" name="nama">
+                            <input type="text" class="form-control" name="nama" value="{{ $aset->nama }}">
                         </div>
                         <!-- /.form group -->
                         <div class="form-group">
                             <label>Jumlah</label>
 
-                            <input type="text" class="form-control" name="jumlah">
+                            <input type="text" class="form-control" name="jumlah" value="{{ $aset->qty }}">
                         </div>
                         <!-- /.form group -->
                         <div class="form-group">
                             <label>Toko</label>
 
-                            <input type="text" class="form-control" name="toko">
+                            <input type="text" class="form-control" name="toko" value="{{ $aset->toko }}">
                         </div>
                         <!-- /.form group -->
                         <div class="form-group">
                             <label>Harga</label>
 
-                            <input type="text" class="form-control" name="harga">
+                            <input type="text" class="form-control" name="harga" value="{{ $aset->harga }}">
                         </div>
                         <div class="form-group">
                             <label>Pecahan/Satuan</label>
 
-                            <input type="text" class="form-control" name="satuan">
+                            <input type="text" class="form-control" name="satuan" value="{{ $aset->satuan }}">
                         </div>
                         <!-- /.form group -->
                         <div class="form-group">
                             <label>Spek</label>
 
-                            <input type="text" class="form-control" name="spek">
+                            <input type="text" class="form-control" name="spek" value="{{ $aset->spek }}">
                         </div>
                         <!-- /.form group -->
                         <div class="form-group">
                             <label>Tanggal</label>
 
-                            <input type="text" class="form-control" name="tanggal">
+                            <input type="text" class="form-control" name="tanggal" value="{{ $aset->tanggal }}">
                         </div>
                         <!-- /.form group -->
                         <div class="form-group">
                             <label>Kegiatan</label>
 
                             <select name="kegiatan" class="form-control">
-                                <option value="" selected>Pilih Kegiatan</option>
+                                <option value="">Pilih Kegiatan</option>
                                 @foreach($kegiatan as $row)
-                                <option value="{{ $row->id_kegiatan }}">{{ $row->nama }}</option>
+                                <option value="{{ $row->id_kegiatan }}" @if($aset->id_kegiatan == $row->id_kegiatan) selected @endif >{{ $row->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -77,18 +78,18 @@
                             <select name="jenis" class="form-control">
                                 <option value="" selected>Pilih Jenis Barang</option>
                                 @foreach($jenis as $row)
-                                <option value="{{ $row->id_jenis }}">{{ $row->nama }}</option>
-                                @endforeach]
+                                <option value="{{ $row->id_jenis }}" @if($aset->id_jenis == $row->id_jenis) selected @endif >{{ $row->nama }}</option>
+                                @endforeach
                             </select>
                         </div>
-                        <div class="form-group" id="input-gudang" style="display:none;">
+                        <div class="form-group" id="input-gudang" @if($aset->id_jenis != 2) style="display:none;" @endif >
                             <label>Gudang</label>
                         <!-- /.LIST GUDANG ADA BANYAK, KALO DICENTANG MUNCUL TEXTBOX, KALAU TIDAK BARANG 
                         TERMASUK ASET-->
                             <select name="gudang" class="form-control">
                                 <option value="">Pilih Gudang</option>
                                 @foreach($gudang as $row)
-                                <option value="{{ $row->id_gudang }}">{{ $row->nama }}</option>
+                                <option value="{{ $row->id_gudang }}" @if($aset->id_gudang == $row->id_gudang) selected @endif>{{ $row->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -132,7 +133,7 @@
             $("#form-tambah-asset").submit(function(e){
                 e.preventDefault();
                 $.ajax({
-                    url: "{{ route('tambah.save') }}",
+                    url: "{{ route('aset.edit.save') }}",
                     data: $('#form-tambah-asset').serialize(),
                     type: "POST",
                     dataType: "JSON",
