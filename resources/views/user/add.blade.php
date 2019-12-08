@@ -14,9 +14,6 @@
                 <div class="box box-danger">
                     <div class="box-header">
                         <h3 class="box-title">Tambah User</h3>
-                        {{ password_hash("123", PASSWORD_DEFAULT) }}
-                        <br>
-                        {{ password_verify('123','$2y$10$mVl1nqfqHWor5qI23QU./uv85bcbU2DHoRLVRGnjZmrVUkx948YS.') }}
                     </div>
                     <div class="box-body">
 
