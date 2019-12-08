@@ -20,6 +20,10 @@
                         <form action="#" id="form-user">
                             <input type="hidden" name="id_user" value="{{ $user->id_user }}">
                             <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" name="username" value="{{ $user->username }}">
+                            </div>
+                            <div class="form-group">
                                 <label>Nama</label>
                                 <input type="text" class="form-control" name="nama" value="{{ $user->nama }}">
                             </div>
@@ -32,6 +36,26 @@
                             <div class="form-group">
                                 <label>NIP</label>
                                 <input type="text" class="form-control" name="nip" value="{{ $user->nip }}">
+                            </div>
+                            <!-- /.form group -->
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                            <!-- /.form group -->
+                            <div class="form-group">
+                                <label>Konfirmasi Password</label>
+                                <input type="text" class="form-control" name="password_confirmation">
+                            </div>
+                            <!-- /.form group -->
+                            <div class="form-group">
+                                <label>Role User</label>
+                                <select name="roles" class="form-control">
+                                    <option value="admin" @if($user->roles == "admin") selected @endif>Admin</option>
+                                    <option value="kegiatan" @if($user->roles == "kegiatan") selected @endif>Kegiatan</option>
+                                    <option value="gudang" @if($user->roles == "gudang") selected @endif>Gudang</option>
+                                    <option value="bidang" @if($user->roles == "bidang") selected @endif>Bidang</option>
+                                </select>
                             </div>
                             <!-- /.form group -->
                             <div class="form-group">

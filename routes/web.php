@@ -95,3 +95,6 @@ Route::get('/kegiatan/request/delete/{id}', 'requestController@delete')->name('r
 Route::post('/kegiatan/request/edit/save', 'requestController@saveEdit')->name('requestbarang.saveEdit');
 Route::get('/kegiatan/diambil', 'diambilController@diambil')->name('diambil');
 Route::get('/kegiatan/diambil/delete/{id}', 'diambilController@delete')->name('diambil.delete');
+
+// auth
+Route::get('/login', 'loginController@index')->name('login');

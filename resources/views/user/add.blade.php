@@ -14,12 +14,19 @@
                 <div class="box box-danger">
                     <div class="box-header">
                         <h3 class="box-title">Tambah User</h3>
+                        {{ password_hash("123", PASSWORD_DEFAULT) }}
+                        <br>
+                        {{ password_verify('123','$2y$10$mVl1nqfqHWor5qI23QU./uv85bcbU2DHoRLVRGnjZmrVUkx948YS.') }}
                     </div>
                     <div class="box-body">
 
                         <form action="#" id="form-user">
                             <div class="form-group">
-                                <label>Nama</label>
+                                <label>Username</label>
+                                <input type="text" class="form-control" name="username">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Lengkap</label>
                                 <input type="text" class="form-control" name="nama">
                             </div>
                             <!-- /.form group -->
@@ -31,6 +38,26 @@
                             <div class="form-group">
                                 <label>NIP</label>
                                 <input type="text" class="form-control" name="nip">
+                            </div>
+                            <!-- /.form group -->
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                            <!-- /.form group -->
+                            <div class="form-group">
+                                <label>Konfirmasi Password</label>
+                                <input type="text" class="form-control" name="password_confirmation">
+                            </div>
+                            <!-- /.form group -->
+                            <div class="form-group">
+                                <label>Role User</label>
+                                <select name="roles" class="form-control">
+                                    <option value="admin">Admin</option>
+                                    <option value="kegiatan">Kegiatan</option>
+                                    <option value="gudang">Gudang</option>
+                                    <option value="bidang">Bidang</option>
+                                </select>
                             </div>
                             <!-- /.form group -->
                             <div class="form-group">

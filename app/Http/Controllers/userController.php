@@ -34,13 +34,17 @@ class userController extends Controller
         if ($request->isMethod('post')) {
             $messages = [
                 'required' => ':attribute harus di isi.',
-                'max' => ':attribute tidak lebih dari :max'
+                'max' => ':attribute tidak lebih dari :max',
+                'confirmed' => 'Password & Konfirmasi Password Tidak Sama.'
             ];
 
             $rules = [
+                'username' => 'required|max:50',
                 'nama' => 'required|max:45',
                 'jabatan' => 'required|max:45',
                 'nip' => 'required|max:25',
+                'password' => 'required|confirmed',
+                'roles' => 'required',
                 'status' => 'required',
             ];
 
@@ -53,9 +57,12 @@ class userController extends Controller
             }
 
             $gudang = new User;
+            $gudang->username = $request->username;
             $gudang->nama = $request->nama;
             $gudang->jabatan = $request->jabatan;
             $gudang->nip = $request->nip;
+            $gudang->password = password_hash($request->password, PASSWORD_DEFAULT);
+            $gudang->roles = $request->roles;
             $gudang->status = $request->status;
             $gudang->save();
 
@@ -70,13 +77,17 @@ class userController extends Controller
         if ($request->isMethod('post')) {
             $messages = [
                 'required' => ':attribute harus di isi.',
-                'max' => ':attribute tidak lebih dari :max'
+                'max' => ':attribute tidak lebih dari :max',
+                'confirmed' => 'Password & Konfirmasi Password Tidak Sama.'
             ];
 
             $rules = [
+                'username' => 'required|max:50',
                 'nama' => 'required|max:45',
                 'jabatan' => 'required|max:45',
                 'nip' => 'required|max:25',
+                'password' => 'confirmed',
+                'roles' => 'required',
                 'status' => 'required',
             ];
 
@@ -89,9 +100,14 @@ class userController extends Controller
             }
 
             $gudang = User::find($request->id_user);
+            $gudang->username = $request->username;
             $gudang->nama = $request->nama;
             $gudang->jabatan = $request->jabatan;
             $gudang->nip = $request->nip;
+            if($request->password != ""){
+                $gudang->password = password_hash($request->password, PASSWORD_DEFAULT);
+            }
+            $gudang->roles = $request->roles;
             $gudang->status = $request->status;
             $gudang->save();
 

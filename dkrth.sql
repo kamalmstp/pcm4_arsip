@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.0-rc1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 24, 2019 at 10:03 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Host: localhost
+-- Generation Time: Dec 09, 2019 at 02:07 AM
+-- Server version: 8.0.18-0ubuntu0.19.10.1
+-- PHP Version: 7.3.12-1+ubuntu19.10.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -235,11 +235,13 @@ CREATE TABLE `spk` (
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
+  `username` varchar(50) DEFAULT NULL,
   `nama` varchar(45) DEFAULT NULL,
   `jabatan` varchar(45) DEFAULT NULL,
   `nip` varchar(45) DEFAULT NULL,
   `telepon` int(11) DEFAULT NULL,
   `roles` varchar(45) DEFAULT NULL,
+  `password` text,
   `status` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -247,8 +249,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `jabatan`, `nip`, `telepon`, `roles`, `status`) VALUES
-(1, 'Franata Mahardika Rosandi', 'Ketua Dinas Sosial', '12377700002', NULL, NULL, 1);
+INSERT INTO `user` (`id_user`, `username`, `nama`, `jabatan`, `nip`, `telepon`, `roles`, `password`, `status`) VALUES
+(1, 'franata', 'Franata Mahardika Rosandi', 'Ketua Dinas Sosial', '12377700002', NULL, 'admin', '$2y$10$EMCF7EXGxKsVJOEmoROnkeT1cVFu/sj3iarQJvBgLjkI55JVIDuya', 1),
+(3, 'admin', 'Admin Dkrth', 'admin', '111234567890', NULL, 'admin', '$2y$10$WjBpPJhw2g/txOTjVGbjROd3XPaqIZx3pDEae/1bJIrV2qk7buLd6', 1);
 
 --
 -- Indexes for dumped tables
@@ -403,7 +406,7 @@ ALTER TABLE `spk`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -462,3 +465,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
