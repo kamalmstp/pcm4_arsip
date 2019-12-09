@@ -30,10 +30,16 @@
       <div class="login-logo">
         <a href="{{ asset('/') }}/home"><b>DKRTH</b></a>
       </div>
+      @if (Session::has("error"))
+        <div class="alert alert-warning alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          {{ Session::get("error") }}
+        </div>
+      @endif
       <!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="{{ asset('/') }}/login" method="post">
+        <form action="{{ url('login') }}" method="post">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group has-feedback ">
             <input type="text" name="username" class="form-control" value=""

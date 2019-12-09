@@ -132,10 +132,19 @@ class tambahController extends Controller
         }
     }
 
-    public function masuk(){
+    public function masuk(Request $request){
         $barang = Barang::all();
+        $roles = $request->session()->get('roles');
         return view('gudang.masuk',[
             "barang"=>$barang,
+            "roles"=>$roles,
         ]);
+    }
+
+    public function gudang_setujui($id){
+        $barang = Barang::find($id);            
+        $barang->status_gudang = 1;
+        $barang->save();
+        return redirect('/gudang/masuk');
     }
 }

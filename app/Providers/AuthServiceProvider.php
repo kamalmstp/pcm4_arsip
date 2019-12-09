@@ -26,5 +26,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+        // Gate::define('home-menu', function ($user) {
+        //     return true;
+        // });
     }
 }

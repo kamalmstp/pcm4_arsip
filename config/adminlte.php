@@ -134,15 +134,11 @@ return [
         // ],
         ['header' => 'main_navigation'],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text'        => 'Home',
             'url'         => 'index',
             'icon'        => 'fas fa-home',
             'label_color' => 'success',
+            // 'can'         => 'home-menu'
         ],
         [
             'text'        => 'Barang',

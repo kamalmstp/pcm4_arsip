@@ -20,7 +20,9 @@
                   <th>Jumlah</th>
                   <th>Kegiatan</th>
                   <th>Tanggal</th>
+                  @if($roles == 'gudang')
                   <th>Action</th>
+                  @endif
                 </tr>
                 </thead>
                 <tbody>
@@ -31,9 +33,11 @@
                   <td>{{ $row->qty }}/{{ $row->satuan }}</td>
                   <td>{{ $row->kegiatan->nama }}</td>
                   <td> {{ date('d M Y', strtotime($row->tanggal)) }}</td>
+                  @if($roles == 'gudang')
                   <td>
-                    <a  href="#" class="btn  btn-success">Setujui</a>
+                    <a href="{{ url('gudang/setujui') }}/{{ $row->id_barang }}" class="btn @if($row->status_gudang == 0) btn-warning @else btn-success @endif" id="btn-setujui-gudang">@if($row->status_gudang == 0) Setujui @else Disetujui @endif</a>
                   </td>
+                  @endif
                 </tr>
                 @endforeach
              
@@ -44,7 +48,9 @@
                   <th>Jumlah</th>
                   <th>Nama Pengambil</th>
                   <th>Tanggal</th>
+                  @if($roles == 'gudang')
                   <th>Action</th>
+                  @endif
                 </tr>
                 </tfoot>
               </table>
@@ -74,6 +80,8 @@
       'info'        : true,
       'autoWidth'   : false
     })
+
+
   })
 </script>
 @stop

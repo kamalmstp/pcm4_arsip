@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2019 at 02:07 AM
+-- Generation Time: Dec 10, 2019 at 02:17 AM
 -- Server version: 8.0.18-0ubuntu0.19.10.1
 -- PHP Version: 7.3.12-1+ubuntu19.10.1+deb.sury.org+1
 
@@ -39,18 +39,19 @@ CREATE TABLE `barang` (
   `tanggal` date DEFAULT NULL,
   `id_kegiatan` int(11) DEFAULT NULL,
   `id_jenis` int(11) DEFAULT NULL,
-  `id_gudang` int(11) DEFAULT NULL
+  `id_gudang` int(11) DEFAULT NULL,
+  `status_gudang` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama`, `qty`, `toko`, `harga`, `spek`, `satuan`, `tanggal`, `id_kegiatan`, `id_jenis`, `id_gudang`) VALUES
-(1, 'Kursi', 100, 'Toko Kursi', 2000000, 'Kayu', 'Buah', '2019-11-08', 1, 2, 2),
-(2, 'Cat', 100, 'Toko cat', 1000000, 'Merah', 'pcs', '2019-11-08', 1, 1, NULL),
-(3, 'Meja', 12, 'Merdeka', 20000000, 'kayu baru', 'buah', '2019-11-25', 1, 1, NULL),
-(4, 'Meja', 12, 'Merdeka2', 20000000, 'kayu baru', 'Buah', '2019-11-25', 1, 1, NULL);
+INSERT INTO `barang` (`id_barang`, `nama`, `qty`, `toko`, `harga`, `spek`, `satuan`, `tanggal`, `id_kegiatan`, `id_jenis`, `id_gudang`, `status_gudang`) VALUES
+(1, 'Kursi', 100, 'Toko Kursi', 2000000, 'Kayu', 'Buah', '2019-11-08', 1, 2, 2, 0),
+(2, 'Cat', 100, 'Toko cat', 1000000, 'Merah', 'pcs', '2019-11-08', 1, 1, NULL, 1),
+(3, 'Meja', 12, 'Merdeka', 20000000, 'kayu baru', 'buah', '2019-11-25', 1, 1, NULL, 0),
+(4, 'Meja', 12, 'Merdeka2', 20000000, 'kayu baru', 'Buah', '2019-11-25', 1, 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -251,7 +252,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `username`, `nama`, `jabatan`, `nip`, `telepon`, `roles`, `password`, `status`) VALUES
 (1, 'franata', 'Franata Mahardika Rosandi', 'Ketua Dinas Sosial', '12377700002', NULL, 'admin', '$2y$10$EMCF7EXGxKsVJOEmoROnkeT1cVFu/sj3iarQJvBgLjkI55JVIDuya', 1),
-(3, 'admin', 'Admin Dkrth', 'admin', '111234567890', NULL, 'admin', '$2y$10$WjBpPJhw2g/txOTjVGbjROd3XPaqIZx3pDEae/1bJIrV2qk7buLd6', 1);
+(3, 'admin', 'Admin Dkrth', 'admin', '111234567890', NULL, 'admin', '$2y$10$WjBpPJhw2g/txOTjVGbjROd3XPaqIZx3pDEae/1bJIrV2qk7buLd6', 1),
+(4, 'gudang', 'user gudang', 'admin gudang', '1234567890', NULL, 'gudang', '$2y$10$5Ow19xmHfBaj1GZgI8qZDuXmLbCGzTLIiKRdfUTyhiHBiixiZzEni', 1);
 
 --
 -- Indexes for dumped tables
@@ -406,7 +408,7 @@ ALTER TABLE `spk`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
