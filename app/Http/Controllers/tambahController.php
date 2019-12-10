@@ -74,6 +74,7 @@ class tambahController extends Controller
             $barang->spek = $request->spek;
             $barang->satuan = $request->satuan;
             $barang->tanggal = $request->tanggal;
+            $barang->id_user = $request->session()->get('admin');
             $barang->id_kegiatan = $request->kegiatan;
             $barang->id_jenis = $request->jenis;
             $barang->id_gudang = $request->gudang;
