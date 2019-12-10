@@ -95,6 +95,7 @@ Route::group(['middleware' => ['admin']], function () {
   Route::post('/kegiatan/request/save', 'requestController@save')->name('requestbarang.save');
   Route::get('/kegiatan/request/delete/{id}', 'requestController@delete')->name('requestbarang.delete');
   Route::post('/kegiatan/request/edit/save', 'requestController@saveEdit')->name('requestbarang.saveEdit');
+  Route::get('/kegiatan/request/setujui/{id}', 'requestController@setujui')->name('requestbarang.setujui');
   Route::get('/kegiatan/diambil', 'diambilController@diambil')->name('diambil');
   Route::get('/kegiatan/diambil/delete/{id}', 'diambilController@delete')->name('diambil.delete');
   Route::post('/logout', 'loginController@proccess_logout')->name('proccess_logout');

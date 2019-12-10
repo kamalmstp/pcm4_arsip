@@ -18,51 +18,31 @@
                 <tr>
                   <th>Nama Aset</th>
                   <th>Jumlah Stok</th>
-                  <th>Pengadaan Tahun</th>
-                  <th>Nilai Aset</th>
+                  <th width="170">Pengadaan Tahun</th>
+                  <th width="120">Nilai Aset</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                 
-                  <td><a  href="#" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  
-                  <td><a  href="#" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                 
-                  <td><a  href="#" class="btn  btn-warning">Edit</a>
-                    <button type="button" class="btn  btn-danger">Delete</button></td>
-                </tr>
 
+                @foreach($barang as $row)
+                <tr>
+                  <td>{{ $row->nama }}</td>
+                  <td>{{ $row->qty }}/{{ $row->satuan }}</td>
+                  <td>{{ date('Y', strtotime($row->tanggal)) }}</td>
+                  <td>
+                    <a href="{{ route('aset.edit', ['id'=>$row->id_barang]) }}" class="btn btn-warning">Edit</a>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                  </td>
+                </tr>
+                @endforeach
              
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                 
-                  <th>CSS grade</th>
+                  <th>Nama Aset</th>
+                  <th>Jumlah Stok</th>
+                  <th>Pengadaan Tahun</th>
+                  <th>Nilai Aset</th>
                 </tr>
                 </tfoot>
               </table>

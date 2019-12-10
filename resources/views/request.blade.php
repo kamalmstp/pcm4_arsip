@@ -26,7 +26,7 @@
                   <th>Jumlah </th>
                   <th>Kegiatan</th>
                   <th>Nama Pengambil</th>
-                  <th>Aksi</th>
+                  <th width="210">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,6 +39,15 @@
                   <td>{{ $row->user->nama }}</td>
                   <td>
                     <a href="{{ route('requestbarang.lihat',['id'=>$row->id_request]) }}" class="btn  btn-warning">Lihat</a>
+                    @if($roles == 'gudang')
+                    <a href="@if($row->status == 0){{ route('requestbarang.setujui',['id'=>$row->id_request]) }}@else#@endif" class="btn btn-success">
+                      @if($row->status == 0)
+                        Setujui
+                      @else
+                        Disetujui
+                      @endif
+                    </a>
+                    @endif
                     <a href="{{ route('requestbarang.delete',['id'=>$row->id_request]) }}"" class="btn  btn-danger">Delete</a>
                   </td>
                 </tr>

@@ -80,6 +80,9 @@ class tambahController extends Controller
             $barang->save();
 
             $data["status"] = true;
+            if($request->jenis == 1){
+                $data["isAsset"] = true;
+            }
             Session::flash('success', 'Data Berhasil Di Tambah');
             return response()->json($data);
         }

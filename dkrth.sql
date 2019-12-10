@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 10, 2019 at 02:17 AM
+-- Generation Time: Dec 11, 2019 at 01:43 AM
 -- Server version: 8.0.18-0ubuntu0.19.10.1
 -- PHP Version: 7.3.12-1+ubuntu19.10.1+deb.sury.org+1
 
@@ -37,6 +37,7 @@ CREATE TABLE `barang` (
   `spek` varchar(45) DEFAULT NULL,
   `satuan` varchar(5) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
+  `id_user` int(12) DEFAULT NULL,
   `id_kegiatan` int(11) DEFAULT NULL,
   `id_jenis` int(11) DEFAULT NULL,
   `id_gudang` int(11) DEFAULT NULL,
@@ -47,11 +48,13 @@ CREATE TABLE `barang` (
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama`, `qty`, `toko`, `harga`, `spek`, `satuan`, `tanggal`, `id_kegiatan`, `id_jenis`, `id_gudang`, `status_gudang`) VALUES
-(1, 'Kursi', 100, 'Toko Kursi', 2000000, 'Kayu', 'Buah', '2019-11-08', 1, 2, 2, 0),
-(2, 'Cat', 100, 'Toko cat', 1000000, 'Merah', 'pcs', '2019-11-08', 1, 1, NULL, 1),
-(3, 'Meja', 12, 'Merdeka', 20000000, 'kayu baru', 'buah', '2019-11-25', 1, 1, NULL, 0),
-(4, 'Meja', 12, 'Merdeka2', 20000000, 'kayu baru', 'Buah', '2019-11-25', 1, 1, NULL, 1);
+INSERT INTO `barang` (`id_barang`, `nama`, `qty`, `toko`, `harga`, `spek`, `satuan`, `tanggal`, `id_user`, `id_kegiatan`, `id_jenis`, `id_gudang`, `status_gudang`) VALUES
+(1, 'Kursi', 100, 'Toko Kursi', 2000000, 'Kayu', 'Buah', '2019-11-08', 5, 1, 2, 2, 0),
+(2, 'Cat', 0, 'Toko cat', 1000000, 'Merah', 'pcs', '2019-11-08', 5, 1, 1, NULL, 1),
+(3, 'Meja', 12, 'Merdeka', 20000000, 'kayu baru', 'buah', '2019-11-25', 5, 1, 1, NULL, 0),
+(4, 'Meja', 12, 'Merdeka2', 20000000, 'kayu baru', 'Buah', '2019-11-25', 6, 1, 1, NULL, 1),
+(5, 'Tong Sampah', 12, 'Toko Matahari', 20000000, 'plastic', 'Buah', '2019-12-12', 6, 1, 1, NULL, 0),
+(6, 'Pot Bungga', 1000, 'Toko Matahari', 3000000, 'plastic', 'Buah', '2019-12-13', 6, 1, 2, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -108,6 +111,13 @@ CREATE TABLE `history` (
   `toko` varchar(45) NOT NULL,
   `id_request` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id_history`, `id_barang`, `tanggal`, `harga`, `qty`, `status`, `toko`, `id_request`) VALUES
+(2, 2, '2019-12-10', 1000000, 0, '0', 'Toko cat', 1);
 
 -- --------------------------------------------------------
 
@@ -181,15 +191,16 @@ CREATE TABLE `request` (
   `id_user` int(11) DEFAULT NULL,
   `id_kegiatan` int(11) DEFAULT NULL,
   `id_barang` int(11) DEFAULT NULL,
-  `qty` int(5) DEFAULT NULL
+  `qty` int(5) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `request`
 --
 
-INSERT INTO `request` (`id_request`, `nama_req`, `tanggal`, `id_user`, `id_kegiatan`, `id_barang`, `qty`) VALUES
-(1, 'Tata Kota Bulan Desember', '2019-11-24', 1, 1, 2, 101);
+INSERT INTO `request` (`id_request`, `nama_req`, `tanggal`, `id_user`, `id_kegiatan`, `id_barang`, `qty`, `status`) VALUES
+(1, 'Tata Kota Bulan Desember', '2019-11-24', 1, 1, 2, 101, 1);
 
 -- --------------------------------------------------------
 
@@ -253,7 +264,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `username`, `nama`, `jabatan`, `nip`, `telepon`, `roles`, `password`, `status`) VALUES
 (1, 'franata', 'Franata Mahardika Rosandi', 'Ketua Dinas Sosial', '12377700002', NULL, 'admin', '$2y$10$EMCF7EXGxKsVJOEmoROnkeT1cVFu/sj3iarQJvBgLjkI55JVIDuya', 1),
 (3, 'admin', 'Admin Dkrth', 'admin', '111234567890', NULL, 'admin', '$2y$10$WjBpPJhw2g/txOTjVGbjROd3XPaqIZx3pDEae/1bJIrV2qk7buLd6', 1),
-(4, 'gudang', 'user gudang', 'admin gudang', '1234567890', NULL, 'gudang', '$2y$10$5Ow19xmHfBaj1GZgI8qZDuXmLbCGzTLIiKRdfUTyhiHBiixiZzEni', 1);
+(4, 'gudang', 'user gudang', 'admin gudang', '1234567890', NULL, 'gudang', '$2y$10$5Ow19xmHfBaj1GZgI8qZDuXmLbCGzTLIiKRdfUTyhiHBiixiZzEni', 1),
+(5, 'Kegiatan 1', 'Kegiatan 1', 'Admin', '1234567890', NULL, 'kegiatan', '$2y$10$nig0Ch0hXVQ9IdbP6AHiYeRa1nGer5xIkBsAjn7qs1uvjIlx5qUei', 1),
+(6, 'Kegiatan 2', 'Kegiatan 2', 'Admin', '1234567890', NULL, 'kegiatan', '$2y$10$RNA..fmvjM9iPS1vzmZzdeIYmDXaEG65ad5G/j2mqd9uklI0ifYau', 1);
 
 --
 -- Indexes for dumped tables
@@ -348,7 +361,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `bidang`
@@ -360,13 +373,13 @@ ALTER TABLE `bidang`
 -- AUTO_INCREMENT for table `gudang`
 --
 ALTER TABLE `gudang`
-  MODIFY `id_gudang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_gudang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `jenis_barang`
@@ -408,7 +421,7 @@ ALTER TABLE `spk`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

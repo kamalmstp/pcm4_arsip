@@ -14,8 +14,12 @@ use App\Jenis;
 
 class adminController extends Controller
 {
-    public function index(){
-        $barang = Barang::all();
+    public function index(Request $request){
+        if($request->session()->get('roles') == 'kegiatan'){
+            $barang = Barang::where('id_user',$request->session()->get('admin'))->get();
+        }else{
+            $barang = Barang::all();
+        }
         return view('index',[
             "barang"=>$barang
         ]);

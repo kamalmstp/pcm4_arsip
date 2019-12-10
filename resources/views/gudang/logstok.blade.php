@@ -18,52 +18,33 @@
                 <tr>
                   <th>Nama Barang</th>
                   <th>Jumlah Stok</th>
-                  <th>Kegiatan</th>
+                  <th>Tanggal</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td><a  href="#" class="btn  btn-success">Cetak</a>
-                    </td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td><a  href="#" class="btn  btn-success">Cetak</a>
-                    </td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td><a  href="#" class="btn  btn-success">Cetak</a>
-                    </td>
-                </tr>
 
+                @foreach($history as $row)
+                <tr>
+                  <td>{{ $row->barang->nama }}</td>
+                  <td>{{ $row->qty }}</td>
+                  <td>{{ $row->tanggal }}</td>
+                  <td>Disetujui</td>
+                  <td>
+                    <a  href="#" class="btn  btn-success">Cetak</a>
+                  </td>
+                </tr>
+                @endforeach
              
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Nama Barang</th>
+                  <th>Jumlah Stok</th>
+                  <th>Tanggal</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
                 </tfoot>
               </table>

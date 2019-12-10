@@ -11,14 +11,17 @@ use App\User;
 use App\Request as Permintaan;
 use App\Kegiatan;
 use App\Barang;
+use App\History;
 
 class requestController extends Controller
 {
 
-    public function request(){
-        $request = Permintaan::all();
+    public function request(Request $request){
+        $permintaan = Permintaan::all();
+        $roles = $request->session()->get('roles');
         return view('request',[
-            'request'=>$request,
+            'request'=>$permintaan,
+            "roles"=>$roles
         ]);
     }
 
@@ -145,6 +148,35 @@ class requestController extends Controller
         $permintaan->delete();
 
         return redirect()->route('request')->with(['success' => 'Data Berhasil Di Hapus']);
+    }
+
+    public function setujui($id){
+        $permintaan = Permintaan::find($id);
+        $barang = Barang::find($permintaan->id_barang);
+
+        if(is_null($permintaan)){
+            App::abort(404);
+        }
+
+        // update stock
+        $qty = $barang->qty - $permintaan->qty;
+        $barang->qty = $qty;
+        $barang->save();
+
+        $history = new History;
+        $history->id_barang = $barang->id_barang;
+        $history->tanggal = date('Y-m-d');
+        $history->harga = $barang->harga;
+        $history->qty = $qty;
+        $history->toko = $barang->toko;
+        $history->id_request = $permintaan->id_request;
+        $history->status = 0;
+        $history->save();
+
+        $permintaan->status = 1;
+        $permintaan->save();
+
+        return redirect()->route('request')->with(['success' => 'Data Berhasil Di Setujui']);
     }
 
 }

@@ -80,8 +80,6 @@
       'info'        : true,
       'autoWidth'   : false
     })
-
-
   })
 </script>
 @stop

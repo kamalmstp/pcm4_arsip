@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'User')
+@section('title', 'Home')
 
 @section('content_header')
-    <h1>Menu Home Semua User</h1>
+    <h1>Menu Home</h1>
 @stop
 
 @section('content')
@@ -19,7 +19,7 @@
                   <th>List Aset</th>
                   <th>Jumlah Stok</th>
                   <th>Kegiatan</th>
-                  <th>Action</th>
+                  <th width="130">Action</th>
                 </tr>
                 </thead>
                 <tbody>

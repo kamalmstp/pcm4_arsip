@@ -138,7 +138,11 @@
                     dataType: "JSON",
                     success: function(data){
                         if(data.status){
-                            window.location.href = "{{ route('index') }}";
+                            if(data.isAsset){
+                                window.location.href = "{{ route('nilai') }}";
+                            }else{
+                                window.location.href = "{{ route('index') }}";
+                            }
                         }else{
                             var error = data.error;
                             $.each(error,function(key, row){
