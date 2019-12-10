@@ -39,7 +39,7 @@
                   <td>{{ $row->user->nama }}</td>
                   <td>
                     <a href="{{ route('requestbarang.lihat',['id'=>$row->id_request]) }}" class="btn  btn-warning">Lihat</a>
-                    @if($roles == 'gudang')
+                    @if($roles == 'gudang' || $roles == 'admin')
                     <a href="@if($row->status == 0){{ route('requestbarang.setujui',['id'=>$row->id_request]) }}@else#@endif" class="btn btn-success">
                       @if($row->status == 0)
                         Setujui
@@ -48,7 +48,9 @@
                       @endif
                     </a>
                     @endif
+                    @if($roles == 'gudang' || $roles == 'admin')
                     <a href="{{ route('requestbarang.delete',['id'=>$row->id_request]) }}"" class="btn  btn-danger">Delete</a>
+                    @endif
                   </td>
                 </tr>
                 @endforeach

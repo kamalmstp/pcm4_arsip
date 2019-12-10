@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 11, 2019 at 01:43 AM
+-- Generation Time: Dec 11, 2019 at 01:59 AM
 -- Server version: 8.0.18-0ubuntu0.19.10.1
 -- PHP Version: 7.3.12-1+ubuntu19.10.1+deb.sury.org+1
 
@@ -49,11 +49,11 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `nama`, `qty`, `toko`, `harga`, `spek`, `satuan`, `tanggal`, `id_user`, `id_kegiatan`, `id_jenis`, `id_gudang`, `status_gudang`) VALUES
-(1, 'Kursi', 100, 'Toko Kursi', 2000000, 'Kayu', 'Buah', '2019-11-08', 5, 1, 2, 2, 0),
-(2, 'Cat', 0, 'Toko cat', 1000000, 'Merah', 'pcs', '2019-11-08', 5, 1, 1, NULL, 1),
-(3, 'Meja', 12, 'Merdeka', 20000000, 'kayu baru', 'buah', '2019-11-25', 5, 1, 1, NULL, 0),
-(4, 'Meja', 12, 'Merdeka2', 20000000, 'kayu baru', 'Buah', '2019-11-25', 6, 1, 1, NULL, 1),
-(5, 'Tong Sampah', 12, 'Toko Matahari', 20000000, 'plastic', 'Buah', '2019-12-12', 6, 1, 1, NULL, 0),
+(1, 'Kursi', 1000, 'Toko Kursi', 2000000, 'Kayu', 'Buah', '2019-11-08', 5, 1, 2, 2, 0),
+(2, 'Cat', 1000, 'Toko cat', 1000000, 'Merah', 'pcs', '2019-11-08', 5, 1, 1, NULL, 1),
+(3, 'Meja', 750, 'Merdeka', 20000000, 'kayu baru', 'buah', '2019-11-25', 5, 1, 1, NULL, 0),
+(4, 'Meja', 800, 'Merdeka2', 20000000, 'kayu baru', 'Buah', '2019-11-25', 6, 1, 1, NULL, 1),
+(5, 'Tong Sampah', 500, 'Toko Matahari', 20000000, 'plastic', 'Buah', '2019-12-12', 6, 1, 1, NULL, 0),
 (6, 'Pot Bungga', 1000, 'Toko Matahari', 3000000, 'plastic', 'Buah', '2019-12-13', 6, 1, 2, 2, 0);
 
 -- --------------------------------------------------------
@@ -117,7 +117,7 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id_history`, `id_barang`, `tanggal`, `harga`, `qty`, `status`, `toko`, `id_request`) VALUES
-(2, 2, '2019-12-10', 1000000, 0, '0', 'Toko cat', 1);
+(2, 2, '2019-12-10', 1000000, 1100, '0', 'Toko cat', 1);
 
 -- --------------------------------------------------------
 
@@ -200,7 +200,7 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`id_request`, `nama_req`, `tanggal`, `id_user`, `id_kegiatan`, `id_barang`, `qty`, `status`) VALUES
-(1, 'Tata Kota Bulan Desember', '2019-11-24', 1, 1, 2, 101, 1);
+(1, 'Tata Kota Bulan Desember', '2019-11-24', 1, 1, 2, 100, 0);
 
 -- --------------------------------------------------------
 
@@ -265,8 +265,8 @@ INSERT INTO `user` (`id_user`, `username`, `nama`, `jabatan`, `nip`, `telepon`, 
 (1, 'franata', 'Franata Mahardika Rosandi', 'Ketua Dinas Sosial', '12377700002', NULL, 'admin', '$2y$10$EMCF7EXGxKsVJOEmoROnkeT1cVFu/sj3iarQJvBgLjkI55JVIDuya', 1),
 (3, 'admin', 'Admin Dkrth', 'admin', '111234567890', NULL, 'admin', '$2y$10$WjBpPJhw2g/txOTjVGbjROd3XPaqIZx3pDEae/1bJIrV2qk7buLd6', 1),
 (4, 'gudang', 'user gudang', 'admin gudang', '1234567890', NULL, 'gudang', '$2y$10$5Ow19xmHfBaj1GZgI8qZDuXmLbCGzTLIiKRdfUTyhiHBiixiZzEni', 1),
-(5, 'Kegiatan 1', 'Kegiatan 1', 'Admin', '1234567890', NULL, 'kegiatan', '$2y$10$nig0Ch0hXVQ9IdbP6AHiYeRa1nGer5xIkBsAjn7qs1uvjIlx5qUei', 1),
-(6, 'Kegiatan 2', 'Kegiatan 2', 'Admin', '1234567890', NULL, 'kegiatan', '$2y$10$RNA..fmvjM9iPS1vzmZzdeIYmDXaEG65ad5G/j2mqd9uklI0ifYau', 1);
+(5, 'Kegiatan1', 'Kegiatan 1', 'Admin', '1234567890', NULL, 'kegiatan', '$2y$10$nig0Ch0hXVQ9IdbP6AHiYeRa1nGer5xIkBsAjn7qs1uvjIlx5qUei', 1),
+(6, 'Kegiatan2', 'Kegiatan 2', 'Admin', '1234567890', NULL, 'kegiatan', '$2y$10$RNA..fmvjM9iPS1vzmZzdeIYmDXaEG65ad5G/j2mqd9uklI0ifYau', 1);
 
 --
 -- Indexes for dumped tables

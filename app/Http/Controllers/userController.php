@@ -61,7 +61,9 @@ class userController extends Controller
             $gudang->nama = $request->nama;
             $gudang->jabatan = $request->jabatan;
             $gudang->nip = $request->nip;
-            $gudang->password = password_hash($request->password, PASSWORD_DEFAULT);
+            if($request->password != ""){
+                $gudang->password = password_hash($request->password, PASSWORD_DEFAULT);
+            }
             $gudang->roles = $request->roles;
             $gudang->status = $request->status;
             $gudang->save();
