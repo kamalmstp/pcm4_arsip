@@ -16,9 +16,9 @@ class nilaiController extends Controller
 {
     public function add(Request $request){
         if($request->session()->get('roles') == 'kegiatan'){
-            $barang = Barang::where('id_user',$request->session()->get('admin'))->get();
+            $barang = Barang::where(['id_user'=>$request->session()->get('admin'),'id_jenis'=>1])->get();
         }else{
-            $barang = Barang::all();
+            $barang = Barang::where('id_jenis',1)->get();
         }
         return view('index',[
             "barang"=>$barang
